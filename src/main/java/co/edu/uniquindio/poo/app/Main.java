@@ -2,8 +2,6 @@ package co.edu.uniquindio.poo.app;
 
 import co.edu.uniquindio.poo.model.Flor;
 import co.edu.uniquindio.poo.model.MiniMapa;
-import co.edu.uniquindio.poo.model.TipoFlor;
-import co.edu.uniquindio.poo.model.TipoFlorFactory;
 
 import java.util.Scanner;
 
@@ -53,20 +51,13 @@ public class Main {
                         System.out.println("\n4.Cerezo 🌸");
                         String tipo = "";
                         String opcionTipo = sc.nextLine();
-                        switch (opcionTipo) {
-                            case "1":
-                                tipo = "Margarita";
-                                break;
-                            case "2":
-                                tipo = "Tulipan";
-                                break;
-                            case "3":
-                                tipo = "Rosa";
-                                break;
-                            case "4":
-                                tipo = "Cerezo";
-                                break;
-                        }
+                        tipo = switch (opcionTipo) {
+                            case "1" -> "Margarita";
+                            case "2" -> "Tulipan";
+                            case "3" -> "Rosa";
+                            case "4" -> "Cerezo";
+                            default -> tipo;
+                        };
 
                         mapa.plantarFlor(x-1, y-1, tipo);
                         System.out.println("Flor plantada con exito.");
