@@ -37,4 +37,8 @@ public class MiniMapa {
             System.out.println();
         }
     }
+
+    public List<Flor> getFlores() {
+        return flores;
+    }
 }

@@ -11,13 +11,7 @@ public class Flor {
         this.tipo = tipo;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
+    //==========GETTERS Y TOSTRING==========//
 
     public TipoFlor getTipo() {
         return tipo;
@@ -25,5 +19,13 @@ public class Flor {
 
     public String getSimbolo(){
         return  tipo.getSimbolo();
+    }
+
+    @Override
+    public String toString() {
+        return "Flor: " +
+                "x=" + x +
+                ", y=" + y +
+                ", tipo=" + tipo.getSimbolo();
     }
 }

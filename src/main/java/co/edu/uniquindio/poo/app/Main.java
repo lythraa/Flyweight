@@ -12,11 +12,12 @@ public class Main {
     public static void main(String[] args) {
         MiniMapa mapa = new MiniMapa(8,8);
         //es de 0 a 7 el mapa
-        mapa.plantarFlor(2,3, "Margarita");
-        mapa.plantarFlor(4, 5, "Tulipan");
-        mapa.plantarFlor(7, 2, "Cerezo");
-        mapa.plantarFlor(6, 3, "Rosa");
+
         mapa.plantarFlor(7, 7, "Cerezo");
+        mapa.plantarFlor(7, 2, "Cerezo");
+        mapa.plantarFlor(4, 5, "Tulipan");
+        mapa.plantarFlor(6, 3, "Rosa");
+        mapa.plantarFlor(2,3, "Margarita");
 
         System.out.println("===================================");
         System.out.println("Bienvenido al MiniMapa con Flores");
@@ -28,9 +29,10 @@ public class Main {
 
         while(ejecutando) {
         System.out.println("\n------- MENU PRINCIPAL -------");
-        System.out.print("\n1.Plantar flor: ");
-        System.out.print("\n2.Mostrar mapa: ");
-        System.out.print("\n3.Salir ");
+        System.out.print("\n1.Plantar flor. ");
+        System.out.print("\n2.Mostrar mapa. ");
+        System.out.print("\n3.Imprimir flores plantadas. ");
+        System.out.print("\n4.Salir. ");
         System.out.print("\nEscribe tu opcion: ");
 
         String opcion = sc.nextLine();
@@ -44,10 +46,29 @@ public class Main {
                         int y = sc.nextInt();
                         sc.nextLine();
 
-                        TipoFlorFactory tipoFlorFactory = new TipoFlorFactory();
-                        String tipoFlor = tipoFlorFactory.ingresarTipo();
+                        System.out.print("Que tipo de flor desea plantar (Margarita, Tulipan, Rosa, Cerezo): ");
+                        System.out.print("\n1.Margarita: 🌼");
+                        System.out.print("\n2.Tulipan 🌷 ");
+                        System.out.print("\n3.Rosa 🌹");
+                        System.out.println("\n4.Cerezo 🌸");
+                        String tipo = "";
+                        String opcionTipo = sc.nextLine();
+                        switch (opcionTipo) {
+                            case "1":
+                                tipo = "Margarita";
+                                break;
+                            case "2":
+                                tipo = "Tulipan";
+                                break;
+                            case "3":
+                                tipo = "Rosa";
+                                break;
+                            case "4":
+                                tipo = "Cerezo";
+                                break;
+                        }
 
-                        mapa.plantarFlor(x, y, tipoFlor);
+                        mapa.plantarFlor(x-1, y-1, tipo);
                         System.out.println("Flor plantada con exito.");
                     }
                     catch(Exception e){
@@ -58,9 +79,13 @@ public class Main {
                      mapa.mostrarMapa();
                     break;
                 case "3":
+                    for(Flor flor : mapa.getFlores()){
+                        System.out.println(flor.toString() + " Código en memoria: " + System.identityHashCode(flor.getTipo()));//!!!!!!!!!
+                    }
+                    break;
+                case "4":
                     ejecutando = false;
                     break;
-
 
             }
         }
