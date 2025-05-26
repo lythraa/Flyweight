@@ -36,7 +36,7 @@ public class Main {
         System.out.print("\n3.Imprimir flores plantadas. ");
         System.out.print("\n4.Salir. ");
         System.out.print("\nEscribe tu opcion: ");
-
+zzzzzzzzzzzzzzzzzzz
         String opcion = sc.nextLine();
 
             switch (opcion){
